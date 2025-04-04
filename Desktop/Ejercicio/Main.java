@@ -1,5 +1,6 @@
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.Random;
 
 public class Main {
 
@@ -7,18 +8,24 @@ public class Main {
     static class Jugador {
         private int id;
         private String nombre;
+        private String apellido;
         private int golesMarcados;
         private int partidosJugados;
 
         // Constructor
-        public NewJugador(String nombre, int id) {
+        public Jugador(String nombre, String apellido,  int id) {
             this.id = id;
             this.nombre = nombre;
+            this.apellido = apellido;
         }
 
         // Getters
         public String getNombre() {
             return nombre;
+        }
+
+        public String getApellido() {
+            return apellido;
         }
 
         public int getId() {
@@ -42,6 +49,31 @@ public class Main {
                     "golesMarcados" + golesMarcados +
                     "partidosJugados" + partidosJugados +
                     '}';
+        }
+
+        //metodo para generera jugadores
+        public List<Jugador> generarJugadores(){
+            List<String> nombres = new ArrayList<>();
+            nombres.add("Luis");
+            nombres.add("Juan");
+            nombres.add("Maria");
+            nombres.add("Carlos");
+                
+            List<String> aplellidos = new ArrayList<>();
+            nombres.add("Sanchez");
+            nombres.add("Perez");
+            nombres.add("Torrez");
+            nombres.add("Lopez");
+
+            List<Jugador> jugadores = new ArrayList<>();
+            for (int i = 0; i < 5; i++){
+                String nombre = nombres.get((Math.random()*4) + 1);
+                String apellidos = aplellidos.get((Math.random()*4) + 1);
+
+                jugadores.add(new Jugador(nombre, apellidos, (Math.random()*4) + 1));
+            }
+
+            return jugadores;
         }
     }
 
